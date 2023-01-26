@@ -1,18 +1,11 @@
 <?php
+  include_once __DIR__ . "/partials/_functions.php";
+
   $letters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
   $numbers = "0123456789";
   $symbols = "|\!£$%&/()=?^*§#@°";
+  $characters = getKindOfCharacters($letters, $numbers, $symbols);
 
-  function getKindOfCharacters($arrayoOne = "", $arrayTwo = "", $arrayThree = ""){
-    return $arrayoOne.$arrayTwo.$arrayThree;
-  }
-  function getRandomLetter($array, $number){
-    $randomString = "";
-    for ($i = 0; $i < $number; $i++){
-      $randomString .= $array[rand(0, strlen($array) - 1)];
-    }
-    return $randomString;
-  }
 ?>
 
 <!DOCTYPE html>
@@ -32,7 +25,6 @@
   </form>
   <?php
     if(isset($_GET["numberLenght"])){
-      $characters = getKindOfCharacters($letters, $numbers, $symbols);
       $passwordGenerated = getRandomLetter($characters, $_GET["numberLenght"]);
       echo "<div> {$passwordGenerated} </div>";
     }
