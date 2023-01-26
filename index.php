@@ -3,7 +3,7 @@
 
   $letters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
   $numbers = "0123456789";
-  $symbols = "|\!£$%&/()=?^*§#@°";
+  $symbols = "!£$%&*#@";
   $haveLetters = $_GET["lettersCheck"] ?? false;
   $haveNumbers = $_GET["numbersCheck"] ?? false;
   $haveSymbos = $_GET["symbolsCheck"] ?? false;
@@ -25,20 +25,46 @@
 <body>
   <form action="./index.php" method="GET">
     <input type="number" name="numberLenght" id="number-lenght">
-    <input type="checkbox" id="letters" name="lettersCheck">
-    <label for="scales">Lettere</label>
-    <input type="checkbox" id="numbers" name="numbersCheck">
-    <label for="scales">Numeri</label>
-    <input type="checkbox" id="symbols" name="symbolsCheck">
-    <label for="scales">Simboli</label>
+
+    <fieldset>
+      <div>
+        <input type="radio" name="repeat" id="repeat" value="true" checked>
+        <label for="repeat">Si</label >
+      </div>
+      <div>
+        <input type="radio" name="repeat" id="repeat" value="false">
+        <label for="noRepeat">No</label>
+      </div>
+    </fieldset>
+
+    <div>
+      <input type="checkbox" id="letters" name="lettersCheck">
+      <label for="lettersCheck">Lettere</label>
+    </div>
+
+    <div>
+      <input type="checkbox" id="numbers" name="numbersCheck">
+      <label for="numbersCheck">Numeri</label>
+    </div>
+
+    <div>
+      <input type="checkbox" id="symbols" name="symbolsCheck">
+      <label for="symbolsCheck">Simboli</label>
+    </div>
 
     <button type="submit">Invia</button>
 
   </form>
   <?php
-    if(isset($_GET["numberLenght"])){
-      $passwordGenerated = getRandomLetter($characters, $_GET["numberLenght"]);
+    if(isset($_GET["numberLenght"])&& isset($_GET["repeat"])){
+      $passwordGenerated = $_GET["repeat"] == "true" ? getRandomPasswordNoRepet($characters, $_GET["numberLenght"]) : getRandomPassword($characters, $_GET["numberLenght"]);
       echo "<div> {$passwordGenerated} </div>";
+    }
+
+    if (str_contains($letters, "c")){
+      echo "ciao";
+    } else {
+      echo "finalmente";
     }
   ?>
 

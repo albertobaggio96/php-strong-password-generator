@@ -12,10 +12,33 @@
     }
     return $string;
   }
-  function getRandomLetter($array, $number){
+  function getRandomPassword($string, $number){
     $randomString = "";
-    for ($i = 0; $i < $number; $i++){
-      $randomString .= $array[rand(0, strlen($array) - 1)];
+    $stringLenght = strlen($string);
+    $i = 0;
+    while ( $i < $number){
+      $element = $string[rand(0, $stringLenght- 1)];
+      $randomString .= $element;
+      $i++;
     }
     return $randomString;
+  }
+
+  function getRandomPasswordNoRepet($string, $number,){
+    $randomString = "";
+    $stringLenght = strlen($string);
+    if($stringLenght >= $number){
+      $i = 0;
+      while ( $i < $number){
+        $element = $string[rand(0, $stringLenght- 1)];
+        if (!str_contains($randomString, $element)){
+          $randomString .= $element;
+          $i++;
+        }
+      }
+      return $randomString;
+    } else{
+      return "Inserisci un numero uguale o inferiore a {$stringLenght}";
+    }
+
   }
