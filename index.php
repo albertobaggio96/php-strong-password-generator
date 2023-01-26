@@ -4,7 +4,11 @@
   $letters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
   $numbers = "0123456789";
   $symbols = "|\!£$%&/()=?^*§#@°";
-  $characters = getKindOfCharacters($letters, $numbers, $symbols);
+  $haveLetters = $_GET["lettersCheck"] ?? false;
+  $haveNumbers = $_GET["numbersCheck"] ?? false;
+  $haveSymbos = $_GET["symbolsCheck"] ?? false;
+  $characters = getKindOfCharacters($letters, $numbers, $symbols, $haveLetters, $haveNumbers, $haveSymbos);
+
 
 ?>
 
@@ -21,7 +25,15 @@
 <body>
   <form action="./index.php" method="GET">
     <input type="number" name="numberLenght" id="number-lenght">
+    <input type="checkbox" id="letters" name="lettersCheck">
+    <label for="scales">Lettere</label>
+    <input type="checkbox" id="numbers" name="numbersCheck">
+    <label for="scales">Numeri</label>
+    <input type="checkbox" id="symbols" name="symbolsCheck">
+    <label for="scales">Simboli</label>
+
     <button type="submit">Invia</button>
+
   </form>
   <?php
     if(isset($_GET["numberLenght"])){
