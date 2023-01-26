@@ -60,12 +60,6 @@
       $passwordGenerated = $_GET["repeat"] == "true" ? getRandomPasswordNoRepet($characters, $_GET["numberLenght"]) : getRandomPassword($characters, $_GET["numberLenght"]);
       echo "<div> {$passwordGenerated} </div>";
     }
-
-    if (str_contains($letters, "c")){
-      echo "ciao";
-    } else {
-      echo "finalmente";
-    }
   ?>
 
   </div>
