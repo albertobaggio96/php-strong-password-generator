@@ -1,4 +1,7 @@
 <?php
+  session_start();
+
+
   include_once __DIR__ . "/partials/_functions.php";
 
   $letters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
@@ -28,37 +31,39 @@
 
     <fieldset>
       <div>
-        <input type="radio" name="repeat" id="repeat" value="true" checked>
+        <input type="radio" name="repeat" id="repeat" value="true">
         <label for="repeat">Si</label >
       </div>
       <div>
-        <input type="radio" name="repeat" id="repeat" value="false">
+        <input type="radio" name="repeat" id="repeat" value="false" checked>
         <label for="noRepeat">No</label>
       </div>
     </fieldset>
 
     <div>
-      <input type="checkbox" id="letters" name="lettersCheck">
+      <input type="checkbox" id="letters" name="lettersCheck" checked>
       <label for="lettersCheck">Lettere</label>
     </div>
 
     <div>
-      <input type="checkbox" id="numbers" name="numbersCheck">
+      <input type="checkbox" id="numbers" name="numbersCheck" checked>
       <label for="numbersCheck">Numeri</label>
     </div>
 
     <div>
-      <input type="checkbox" id="symbols" name="symbolsCheck">
+      <input type="checkbox" id="symbols" name="symbolsCheck" checked>
       <label for="symbolsCheck">Simboli</label>
     </div>
 
     <button type="submit">Invia</button>
+    <button type="submit">annulla</button>
 
   </form>
   <?php
     if(isset($_GET["numberLenght"])&& isset($_GET["repeat"])){
       $passwordGenerated = $_GET["repeat"] == "true" ? getRandomPasswordNoRepet($characters, $_GET["numberLenght"]) : getRandomPassword($characters, $_GET["numberLenght"]);
-      echo "<div> {$passwordGenerated} </div>";
+       echo "<div> {$passwordGenerated} </div>";
+       $_SESSION["password"] = $passwordGenerated;
     }
   ?>
 
