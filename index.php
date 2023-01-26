@@ -1,7 +1,5 @@
 <?php
   session_start();
-
-
   include_once __DIR__ . "/partials/_functions.php";
 
   $letters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
@@ -11,8 +9,6 @@
   $haveNumbers = $_GET["numbersCheck"] ?? false;
   $haveSymbos = $_GET["symbolsCheck"] ?? false;
   $characters = getKindOfCharacters($letters, $numbers, $symbols, $haveLetters, $haveNumbers, $haveSymbos);
-
-
 ?>
 
 <!DOCTYPE html>
@@ -28,7 +24,6 @@
 <body>
   <form action="./index.php" method="GET">
     <input type="number" name="numberLenght" id="number-lenght">
-
     <fieldset>
       <div>
         <input type="radio" name="repeat" id="repeat" value="true">
@@ -56,15 +51,15 @@
     </div>
 
     <button type="submit">Invia</button>
-    <button type="submit">annulla</button>
-
   </form>
+
   <?php
     if(isset($_GET["numberLenght"])&& isset($_GET["repeat"])){
       $passwordGenerated = $_GET["repeat"] == "true" ? getRandomPasswordNoRepet($characters, $_GET["numberLenght"]) : getRandomPassword($characters, $_GET["numberLenght"]);
-       echo "<div> {$passwordGenerated} </div>";
-       $_SESSION["password"] = $passwordGenerated;
-    }
+      //  echo "<div> {$passwordGenerated} </div>";
+      $_SESSION["password"] = $passwordGenerated;
+      }
+      
   ?>
 
   </div>

@@ -9,6 +9,8 @@
     }
     if($booleanThree){
       $string .= $arrayThree;
+    } else{
+      return "Seleziona almeno uno tra i button";
     }
     return $string;
   }
