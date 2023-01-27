@@ -33,8 +33,8 @@ $characters = getKindOfCharacters($letters, $numbers, $symbols, $haveLetters, $h
     <div class="container bg-white p-4">
 
       <form action="./index.php" method="GET" class="row">
-        <label for="number-lenght" class="col-8">Genera una password sicura:</label>
-        <input type="number" name="numberLenght" id="number-lenght" class="col-">
+        <label for="number-length" class="col-8">Genera una password sicura:</label>
+        <input type="number" name="numberLength" id="number-length" class="col-">
         <fieldset class="col-12">
           <div class="row align-items-center">
             <div class="col-8">
@@ -76,10 +76,10 @@ $characters = getKindOfCharacters($letters, $numbers, $symbols, $haveLetters, $h
       </form>
     
     <?php
-    if (isset($_GET["numberLenght"]) && isset($_GET["repeat"])) {
-      $passwordGenerated = $_GET["repeat"] == "true" ? getRandomPasswordNoRepet($characters, $_GET["numberLenght"]) : getRandomPassword($characters, $_GET["numberLenght"]);
-      //  echo "<div> {$passwordGenerated} </div>";
+    if (isset($_GET["numberLength"]) && isset($_GET["repeat"])) {
+      $passwordGenerated = $_GET["repeat"] == "true" ? getRandomPasswordNoRepet($characters, $_GET["numberLength"]) : getRandomPassword($characters, $_GET["numberLength"]);
       $_SESSION["password"] = $passwordGenerated;
+      header('Location: ./psw.php');
     }
     ?>
     </div>
