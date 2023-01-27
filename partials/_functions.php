@@ -16,10 +16,10 @@
   }
   function getRandomPassword($string, $number){
     $randomString = "";
-    $stringLenght = strlen($string);
+    $stringLength = strlen($string);
     $i = 0;
     while ( $i < $number){
-      $element = $string[rand(0, $stringLenght- 1)];
+      $element = $string[rand(0, $stringLength- 1)];
       $randomString .= $element;
       $i++;
     }
@@ -28,11 +28,11 @@
 
   function getRandomPasswordNoRepet($string, $number,){
     $randomString = "";
-    $stringLenght = strlen($string);
-    if($stringLenght >= $number){
+    $stringLength = strlen($string);
+    if($stringLength >= $number){
       $i = 0;
       while ( $i < $number){
-        $element = $string[rand(0, $stringLenght- 1)];
+        $element = $string[rand(0, $stringLength- 1)];
         if (!str_contains($randomString, $element)){
           $randomString .= $element;
           $i++;
@@ -40,7 +40,7 @@
       }
       return $randomString;
     } else{
-      return "Inserisci un numero uguale o inferiore a {$stringLenght}";
+      return "Inserisci un numero uguale o inferiore a {$stringLength}";
     }
 
   }
